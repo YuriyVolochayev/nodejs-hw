@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
-import { connectMongoDB } from './db/connectMongoDB';
-import { notFoundHendler } from './middleware/notFoundHandler';
-import { logger } from './middleware/logger';
-import { errorHandler } from './middleware/errorHandler';
+import { connectMongoDB } from './db/connectMongoDB.js';
+import { notFoundHendler } from './middleware/notFoundHandler.js';
+import { logger } from './middleware/logger.js';
+import { errorHandler } from './middleware/errorHandler.js';
 import notesRoutes from './routes/notesRoutes.js';
 
 const app = express();

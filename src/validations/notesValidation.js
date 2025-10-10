@@ -20,6 +20,7 @@ export const noteIdSchema = {
     noteId: Joi.string().custom(objectIdValidator).required(),
   }),
 };
+
 export const createNoteSchema = {
   [Segments.BODY]: Joi.object({
     title: Joi.string().min(1).max(150).required().messages({
@@ -35,11 +36,12 @@ export const createNoteSchema = {
     tag: Joi.string()
       .valid(...TAGS)
       .required()
-      .message({
+      .messages({
         'any.required': 'Tag is required',
       }),
   }),
 };
+
 export const updateNoteSchema = {
   ...noteIdSchema,
   [Segments.BODY]: Joi.object({

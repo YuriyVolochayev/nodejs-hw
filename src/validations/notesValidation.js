@@ -1,5 +1,5 @@
 import { Joi, Segments } from 'celebrate';
-import { TAGS } from '../constans/tags.js';
+import { TAGS } from '../constants/tags.js';
 import { isValidObjectId } from 'mongoose';
 
 const objectIdValidator = (value, helpers) => {
@@ -35,7 +35,6 @@ export const createNoteSchema = {
     }),
     tag: Joi.string()
       .valid(...TAGS)
-      .required()
       .messages({
         'any.required': 'Tag is required',
       }),
@@ -47,6 +46,6 @@ export const updateNoteSchema = {
   [Segments.BODY]: Joi.object({
     title: Joi.string().min(1),
     content: Joi.string().allow(''),
-    tag: Joi.valid(...TAGS),
+    tag: Joi.string().valid(...TAGS),
   }).min(1),
 };

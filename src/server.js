@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import { connectMongoDB } from './db/connectMongoDB.js';
-import { notFoundHendler } from './middleware/notFoundHandler.js';
+import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { logger } from './middleware/logger.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import notesRoutes from './routes/notesRoutes.js';
@@ -22,7 +22,7 @@ app.get('/test-error', (req, res) => {
   throw new Error('Simulated server error');
 });
 
-app.use(notFoundHendler);
+app.use(notFoundHandler);
 
 app.use(errors());
 

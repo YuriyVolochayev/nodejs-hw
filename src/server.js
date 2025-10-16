@@ -22,10 +22,6 @@ app.use(logger);
 app.use(authRoutes);
 app.use(notesRoutes);
 
-app.get('/test-error', (req, res) => {
-  throw new Error('Simulated server error');
-});
-
 app.use(notFoundHandler);
 
 app.use(errors());
